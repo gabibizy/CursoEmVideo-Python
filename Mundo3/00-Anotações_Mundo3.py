@@ -148,11 +148,66 @@ for p in galera:
 print(f'Temos {totmai} pessoas maiores de idade e {totmen} menores de idade')
 
 # ------------------------------
+#Aula 19 - Dicionários em Python {}
+#Estrutura de dados onde os ínidices podem ser literais (representados por texto).
+# Os índices são chamados de chaves ou KEYS
 
-Aula 19 - Dicionários em Python
+# Valor = print(filme.values()) - Vai mostrar somente os valores ('Star Wars', 1977, 'George Lucas')
+# Chave = print(filme.keys()) - Vai mostrar o nome de cada chave (titulo, ano diretor)
+# Itens = print(filme.items()) - Vai mostrar os dois campos, key e valor.
 
 
+dados = {} #ou dados = dict()
+dados={'nome': 'Pedro', 'idade': 25}
+print(dados['nome'])
+print(dados['idade'])
+
+#Para adicionar elementos:
+dados['sexo']='M'
+
+print(dados['sexo'])
+print(dados)
+#Para remover um elemento
+del dados['idade']
+print(dados)
+
+filme={'titulo': 'Star Wars',
+       'ano': 1977,
+       'diretor':'George Lucas'
+}
+
+for k, v in filme.items(): #ao invés do enumerate vc usa o items
+    print(f'O {k} é {v}') # mostra o key e o valor de cada campo
 
 
+pessoas={'nome': 'Gustavo', 'sexo': 'M', 'idade': 22}
+pessoas ['nome'] = 'Leandro' # modificar o valor
+print(f'O {pessoas["nome"]} tem {pessoas["idade"]} anos.') #Como a frase esta dentro de aspas simples o nome da key tem que estar entre aspas duplas
+print(pessoas.keys())
+print(pessoas.values())
+print(pessoas.items())
 
+
+#Pode-se fazer uma lista e dentro dela colocar dicionários, como por exemplo:
+brasil=[]
+estado1={'uf': 'Rio de Janeiro', 'sigla': 'RJ'}
+estado2={'uf': 'São Paulo', 'sigla': 'SP'}
+brasil.append(estado1)
+brasil.append(estado2)
+print(estado1)
+print(estado2)
+print(brasil) 
+print(brasil[1]) 
+print(brasil[0]['uf'])
+print(brasil[1]['sigla'])
 '''
+estado={}
+brasil=[]
+for c in range(0,3):
+    estado['uf'] = str(input('Unidade Federativa: '))
+    estado['sigla']= str(input('Sigla do Estado: '))
+    brasil.append(estado.copy()) #método de cópia de um dicionário
+for e in brasil:
+    for k, v in e.items():
+        print(f'O campo {k} tem valor {v}')
+
