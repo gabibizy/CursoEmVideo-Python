@@ -200,7 +200,7 @@ print(brasil)
 print(brasil[1]) 
 print(brasil[0]['uf'])
 print(brasil[1]['sigla'])
-'''
+
 estado={}
 brasil=[]
 for c in range(0,3):
@@ -211,3 +211,191 @@ for e in brasil:
     for k, v in e.items():
         print(f'O campo {k} tem valor {v}')
 
+
+# ------------------------------
+# Aula 20 - Funções (Parte 1) 
+# Funções que já existem no Python: print() len() input() int() float()
+# Exemplo: Tudo o que for uma rotina para vc no programa(repetitivo), vc pode criar uma função para que ela faça o comando sem você precisar digitar ele inteiro sempre
+# Um exemplo são as linhas que fizemos para dividir a tela, vc pode criar uma função "mostrarlinha()" por exemplo, ao invés de sempre precisar digitar print('-='*30)
+
+# Boas práticas: pular 2 linhas depois da declaração da função
+# def = é o comando que declara uma função em Python
+
+def mostraLinha():
+    print('-'*30)
+print('Curso em Vídeo')
+mostraLinha()
+
+# ------------------------------
+# Função com parâmetros
+def mensagem(msg):
+    print('-'*30)
+    print(msg)
+    print('-'*30)
+mensagem('Sistema de alunos')
+
+# ------------------------------
+
+def título(txt):
+    print(txt)
+    print('-'*30)
+título('    Curso em Vídeo  ')
+título('    Aprenda Python  ')
+título('    Gustavo Guanabara   ')
+
+# ------------------------------
+# Sem função
+a = 4
+b = 5
+s = a + b
+print(s)
+a = 8
+b = 9
+s = a + b
+print(s)
+a = 2
+b = 1
+s = a + b
+print(s)
+# ------------------------------
+# Com função
+def soma(a, b):
+    print(f'A = {a} e B = {b}')
+    s = a + b
+    print(f'A soma de A + B = {s}')
+    print('-'*30)
+
+
+soma(a=4, b=5)
+soma(b=8, a=9)
+soma(2, 1)
+# ------------------------------
+# Quando vc nao tem a quantidade exata de parâmetros coloque um * (símbolo de desempacotar). Ex: 
+def contador(*num):
+   # for valor in num:
+    #    print(f'{valor}, ', end='')
+    tam = len(num)
+    print(f'Recebi os valors {num} e são ao todo {tam} números' )
+contador(2, 1, 7)
+contador(8, 0)
+contador(4, 4, 7, 6, 2)
+# ------------------------------
+# Dobrar os valores da lista
+def dobra (lst):
+    pos = 0
+    while pos < len(lst):
+        lst[pos] *= 2
+        pos +=1
+
+
+valores = [6, 3, 9, 1, 0, 2]
+dobra(valores)
+print(valores)
+# ------------------------------
+
+# Somar valores com desempacotamento
+def soma(*valores):
+    s = 0
+    for num in valores:
+        s+=num
+    print(f'Somando os valores {valores} temos {s}')
+
+
+soma(5, 2)
+soma(2, 9, 4)
+# ------------------------------
+
+# AULA 21 - Funções (Parte 2):
+    # Interactive Help
+    # Docstrings
+    # Argumentos Opcionais
+    # Escopo de variáveis
+    # Retorno de resultados
+
+
+# Interactive Help - comando: help()
+    help(print)
+
+# ------------------------------
+
+# Docstrings
+print(print.__doc__) 
+
+
+# Exemplo:
+
+def contador (i, f, p):
+    """
+        -> Faz uma contagem e mostra na tela.
+        :param i: inicio da contagem
+        :param f: fim da contagem
+        :param p: passo da contagem
+        :return: sem retorno
+    """
+    c = i
+    while c <= f:
+        print(f'{c} ', end=' ')
+        c+= p
+    print('Fim!')
+
+help(contador)
+
+# ------------------------------
+
+# Parâmetros/Argumentos Opcionais:
+def somar(a,b,c=0): # pode colocar os três como parâmetro opcional também
+    s = a+b+c
+    print(f'A soma vale {s}')
+somar(3,2) # se rodar desta forma vai dar erro pois esta faltando passar o valor de um dos parâmetros pra isso não ocorrer
+# vc pode colocar um valor opcional no parêmtro lá em cima, para que se por acaso ele nao receber nada ele fique com tal 
+# valor
+
+# ------------------------------
+
+# Escopo de variáveis
+def teste():
+    x = 8 # x é uma variável local pois está declarada somente dentro da função
+    print(f'Na função teste, n vale {n}')
+
+n = 2 # n é uma variável global pois esta sendo declarada fora (no programa principal) e pode ser acessada por 
+# qualquer lugar (escopo global)
+print(f'No programa principal, n vale {2}')
+# ------------------------------
+
+def função(b):
+    # global n1 - se aqui vc colocar este comando ele não vai criar a variável local e vai considerar somente a global. 
+    # É assim que 
+    n1 = 4
+    b += 1 # 3
+    print('-='*20)
+    print(f'N1 dentro vale {n1}') # aqui vai ser considerada a variável local que vc criou com o mesmo nome
+    print(f'B vale {b} porque ele recebeu o n1 global que vale 2 e não o local')
+
+
+n1 = 2
+função(n1)
+print(f'N1 fora vale {n1}')
+print('-='*20)
+
+
+# Retorno de resultados
+def somar(a=0,b=0,c=0): # pode colocar os três como parâmetro opcional também
+    s = a+b+c
+    return(f'As somas valem {s}')
+print(somar(3,2))
+
+# ------------------------------
+'''
+# Outro exemplo:
+def par(n=0):
+    if n%2==0:
+        return True
+    else:
+        return False
+
+
+num = int(input('Digite um número: '))
+if par(num):
+    print('É par')
+else:
+    print('É impar')
