@@ -412,8 +412,34 @@ Quando um módulo não é o suficiente utilizamos Pacotes. (quando um módulo fi
 - Pacotes/Bibliotecas: Pasta que contém módulos. Da pra separar por assunto. Dentro do python toda pasta é considerada um pacote
 
 
+# ------------------------------
 
+# AULA 23 - Tratamento de erros e exceções
+Exceção: Não é um erro sintático, o comando esta digitado corretamente mas em alguns casos acontece a exceção.
+É utilizado o try: except:
+try: # Um mesmo try pode ter vários except
+    # operação
+except:
+    # se eu tentar a operação de cima e ela falhar aqui é mostrado o erro
+else:
+    # se der certo faz isso
+finally:
+    # vai acontecer independente se deu certo ou falha
+try:
+    a = int(input('Numerador: '))
+    b = int(input('Denominador: '))
+    r = a/b
+
+except ZeroDivisionError:
+    print('Não é possível dividir um número por zero')
+except KeyboardInterrupt:
+    print('O usuário preferiu não informar os dados')
+except Exception as erro:
+    print(f'Infelizmente tivemos um problema :(\nErro: {erro.__cause__}')
+else: 
+    print(f'O resultado é {r}') 
+finally:
+    print('Volte sempre, muito obrigada')
 '''
-
 
 
