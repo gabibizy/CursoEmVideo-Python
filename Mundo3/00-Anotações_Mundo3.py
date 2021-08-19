@@ -384,8 +384,7 @@ def somar(a=0,b=0,c=0): # pode colocar os três como parâmetro opcional também
     return(f'As somas valem {s}')
 print(somar(3,2))
 
-# ------------------------------
-'''
+
 # Outro exemplo:
 def par(n=0):
     if n%2==0:
@@ -399,3 +398,48 @@ if par(num):
     print('É par')
 else:
     print('É impar')
+    
+# ------------------------------
+
+# AULA 22 - Módulos e Pacotes
+- Modularização - Surgiu no início da década de 60, quando os sistemas foram ficando maiores.
+    - Foco: dividir um programa grande; Aumentar a legibilidade; Facilitar a manutenção; Organização; Ocultação do código detalhado;
+        reutilização em outros projetos;
+OBS: Exemplos na pasta modulos.
+
+Quando um módulo não é o suficiente utilizamos Pacotes. (quando um módulo fica com muitas funções)
+
+- Pacotes/Bibliotecas: Pasta que contém módulos. Da pra separar por assunto. Dentro do python toda pasta é considerada um pacote
+
+
+# ------------------------------
+
+# AULA 23 - Tratamento de erros e exceções
+Exceção: Não é um erro sintático, o comando esta digitado corretamente mas em alguns casos acontece a exceção.
+É utilizado o try: except:
+try: # Um mesmo try pode ter vários except
+    # operação
+except:
+    # se eu tentar a operação de cima e ela falhar aqui é mostrado o erro
+else:
+    # se der certo faz isso
+finally:
+    # vai acontecer independente se deu certo ou falha
+try:
+    a = int(input('Numerador: '))
+    b = int(input('Denominador: '))
+    r = a/b
+
+except ZeroDivisionError:
+    print('Não é possível dividir um número por zero')
+except KeyboardInterrupt:
+    print('O usuário preferiu não informar os dados')
+except Exception as erro:
+    print(f'Infelizmente tivemos um problema :(\nErro: {erro.__cause__}')
+else: 
+    print(f'O resultado é {r}') 
+finally:
+    print('Volte sempre, muito obrigada')
+'''
+
+
